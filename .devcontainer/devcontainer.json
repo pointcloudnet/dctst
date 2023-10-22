@@ -5,7 +5,8 @@
 	,"mounts": [
 		"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"
 		,"source=/Users/dad/dev/site/vscode/docker/fs,target=/workspaces/fs,type=bind,consistency=cached"
-		,"source=/Users/dad/OneDrive/edX/bootcamp,target=/workspaces/bootcamp,type=bind,consistency=cached"
+		// ,"source=/Users/dad/OneDrive/edX/bootcamp,target=/workspaces/bootcamp,type=bind,consistency=cached"
+		,"source=/Users/jroll/edX,target=/workspaces/edX,type=bind,consistency=cached"
 		,"source=${env:HOME}${env:USERPROFILE}/.kube,target=/usr/local/share/kube-localhost,type=bind"
 	]
 	,"overrideCommand": false
