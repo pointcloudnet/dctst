@@ -19,11 +19,9 @@ ENV DOCKER_BUILDKIT=1
 # Install needed packages and setup non-root user. Use a separate RUN statement to add your
 # own dependencies. A user of "automatic" attempts to reuse an user ID if one already exists.
 
-ARG USERNAME=automatic
+#ARG USERNAME=automatic
 #ARG USER_UID=1000
 #ARG USER_GID=$USER_UID
-ARG USER_UID=508
-ARG USER_GID=509
 
 #ARG UNAME=jroll
 #ARG UID=509
@@ -32,6 +30,21 @@ ARG USER_GID=509
 #RUN useradd -m -u $UID -g $GID -o -s /bin/bash $UNAME
 #ARG USERNAME=$UNAME
 #USER $UNAME
+
+
+ARG USERNAME=jroll
+ARG USER_UID=508
+ARG USER_GID=509
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
+    #
+    # [Optional] Add sudo support. Omit if you don't need to install software after connecting.
+    && apt-get update \
+    && apt-get install -y sudo \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME
+
+
 
 COPY library-scripts/*.sh /tmp/library-scripts/
 RUN apt-get update \
