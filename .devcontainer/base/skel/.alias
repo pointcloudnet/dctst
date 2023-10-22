@@ -1,0 +1,4 @@
+alias ll='/bin/ls -alF --color=auto'
+alias lr='/bin/ls -tralF --color=auto'
+alias ls='/bin/ls --color=auto'
+alias lt='/bin/ls -talF --color=auto'

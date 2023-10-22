@@ -1,0 +1,7 @@
+# PATH
+PATH=/bin:/usr/bin:/sbin:/usr/local/bin:$PATH
+
+# MANPATH
+MANPATH=/man:/usr/man:/usr/local/man:$MANPATH
+
+export PATH MANPATH
